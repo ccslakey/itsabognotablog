@@ -1,0 +1,18 @@
+<% @creatures.each do |creature| %>
+
+    <div>
+        <h2>Name: <%= creature.name %></h2> <br>
+        <p>Description: <%=  creature.description %></p><br>
+         <%= button_to "Delete", creature, method: :delete %>
+    </div>
+
+<% end %>
+
+
+<%= form_for Creature.new do |f| %>
+
+    <%= f.text_field :name %>
+    <%= f.text_area :description %>
+    <%= f.submit "save creature" %>
+
+<% end %>
