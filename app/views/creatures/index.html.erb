@@ -1,19 +1,69 @@
-<% @creatures.each do |creature| %>
+<center>
+<!-- Jumbotron header -->
 
+<div class="jumbotron">
+  <h1>Hello, world!</h1>
+  <p>Welcome to my_bog_app, a Ruby on Rails website. Create some creatures here!</p>
+  <p>
+<!-- Modal button -->
+<a href="#" class="btn btn-warning"
+   data-toggle="modal"
+   data-target="#basicModal">
+   View the Creatures of the bog</a>
+  </p>
+</div>
+
+<!-- Modal containing creatures index -->
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+           </button>
+            <h4 class="modal-title" id="myModalLabel">Creatures of the Bog</h4>
+            </div>
+            <div class="modal-body">
+                <h3>
+    <!-- Creatures List -->
+ <% @creatures.each do |creature| %>
 	<div>
-  	<h2>Name: <%= creature.name %></h2> <br>
-  	<p>Description: <%=  creature.description %></p><br>
-    <%= button_to "Delete", creature, method: :delete, class: 'btn btn-primary' %>
-    <!-- why doesn't my bootstrapping the class work??  -->
+	<ul class="list-group">
+  	<li class="list-group-item">
+  		<h2>Name: <%= creature.name %></h2> </li>
+  	<li class="list-group-item">
+  		Description: <%=  creature.description %></li>
+	<li class="list-group-item">
+		<small>Path: creatures/<%=  creature.id  %></small>	
+	</li>
+	<li class="list-group-item">
+    <%= button_to "Delete", creature, method: :delete, class: 'btn btn-danger' %></li>
+    </ul>
     </div>
 
 <% end %>
+    </h3></div><div class="modal-footer">
+  <button type="button" class="btn btn
+  -default" data-dismiss="modal">Close
+  </button>
+        </div>
+    </div>
+  </div>
+</div>
 
+
+<!-- Create new form -->
 
 <%= form_for Creature.new do |f| %>
-
+  <ul>
+  <li align="left" class="list-group-item">
     <%= f.text_field :name %>
+  </li>
+  <li align="left" class="list-group-item">
     <%= f.text_area :description %>
-    <%= f.submit "save creature" %>
-
+	</li>
+  <li align="left" class="list-group-item">
+    <%= f.submit "Save new Creature" %>
+  </li>
+  </ul>
 <% end %>
+</center>

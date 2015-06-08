@@ -1,6 +1,63 @@
-<div>
-        Name: <%= @creature.name %> <br>
-        Description: <%=  @creature.description %>
-    </div>
+<center>
+<div><ul>
+	<li class="list-group-item">
+		<h2>Name: <%= @creature.name %></h2>
+		</li> 
 
-    
+	<li class="list-group-item">
+		Description: <%=  @creature.description %>
+		</li>
+		<li class="list-group-item">
+	<%= button_to "Delete", @creature, method: :delete, class: 'btn btn-danger' %>
+	</li>
+	<!-- edit modal -->
+	<li class="list-group-item">
+		<a href="#" class="btn btn-warning"
+   data-toggle="modal"
+   data-target="#basicModal">
+   Edit this creature</a>
+  </p>
+</div>
+	</li>
+	</ul>
+</div>
+
+
+
+<!-- Modal containing creature -->
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+           </button>
+            <h4 class="modal-title" id="myModalLabel">
+            	Editing <%= @creature.name %>
+            </h4>
+            </div>
+            <div class="modal-body">
+            <h3>
+
+           <%= form_for :creature do |f| %>
+           	<ul>
+           		<li class="list-group-item">
+    						<%= f.text_field :name %>
+    					</li>	
+    					<li class="list-group-item">	
+    						<%= f.text_area :description %>
+    					</li>
+    					<li class="list-group-item">		
+    						<%= f.submit "update creature" %>
+    					</li>
+    		</ul>
+			<% end %>
+
+            </h3></div><div class="modal-footer">
+  <button type="button" class="btn btn
+  -default" data-dismiss="modal">Close
+  </button>
+        </div>
+    </div>
+  </div>
+</div>
+</center>
